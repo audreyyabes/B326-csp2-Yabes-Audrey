@@ -49,4 +49,53 @@ public class ArtistServiceImpl implements ArtistService{
         return artistRepo.searchArtist(keyword.trim());
     }
 
+    @Override
+    public List<Artist> readAllArchivedArtists(){
+        return artistRepo.readAllArchivedArtists();
+    }
+
+    @Override
+    public boolean updateArtist(Artist artist){
+        if(artist.getName() == null || artist.getName().trim().isEmpty()){
+            System.out.println("Artist name is required");
+            return false;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean archivedArtist (String name, int id){
+        if (id <= 0) {
+            System.out.println("Invalid artist ID...");
+            return false;
+        }
+        if (name == null || name.trim().isEmpty()) {
+            System.out.println("Artist name is required...");
+            return false;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean restoreArtist (String name, int id){
+        if (id <= 0){
+            System.out.println("Invalid artist ID...");
+            return false;
+        }
+        if (name == null || name.trim().isEmpty()) {
+            System.out.println("Artist name is required...");
+            return false;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean deleteArtist (int id){
+        if (id <= 0){
+            System.out.println("Invalid artist ID...");
+            return false;
+        }
+        return false;
+    }
+
 }
