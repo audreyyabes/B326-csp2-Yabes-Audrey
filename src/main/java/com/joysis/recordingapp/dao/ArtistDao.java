@@ -84,7 +84,6 @@ public class ArtistDao extends DbConnection {
 
             // synchronization
             System.out.println( rows > 0 ? "" : "Failed to add successfully");
-            readAllArtist();
 
         }catch (SQLException e) {
             System.err.println("Create Artist: " + e.getMessage());
@@ -116,7 +115,6 @@ public class ArtistDao extends DbConnection {
             System.out.println(rows > 0 ? "Artist " + name + " updated successfully" : "Failed to update artist");
 
             System.out.println();
-            readAllArtist();
         } catch (SQLException e) {
             System.out.println("Update Artist: " + e.getMessage());
         }
@@ -148,7 +146,6 @@ public class ArtistDao extends DbConnection {
             System.out.println(rows > 0 ? "Artist " + name + " Archived successfully" : "Failed to update artist");
 
             System.out.println();
-            readAllArtist();
         } catch (SQLException e) {
             System.out.println("Archived Artist: " + e.getMessage());
         }
@@ -180,7 +177,6 @@ public class ArtistDao extends DbConnection {
             System.out.println(rows > 0 ? "Artist" + name + " Restore successfully" : "Failed to update artist");
 
             System.out.println();
-            readAllArtist();
         } catch (SQLException e) {
             System.out.println("Restore Artist: " + e.getMessage());
         }
@@ -202,7 +198,6 @@ public class ArtistDao extends DbConnection {
             System.out.println(rows > 0 ? "Artist delete successfully" : "Failed to delete artist");
 
             System.out.println();
-            readAllArtist();
         } catch (SQLException e) {
             System.out.println("Delete Artist: " + e.getMessage());
         }
