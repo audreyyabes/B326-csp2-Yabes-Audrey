@@ -11,9 +11,15 @@ public class Main {
 
         DbConnection dbConnection = new DbConnection();
         ArtistDao artistDao = new ArtistDao(dbConnection);
-        artistDao.readAllArtist();
-        //artistDao.createArtist("Twice");
-        artistDao.updateArtist("Twice", 6);
+        //artistDao.readAllArtist();
+        //artistDao.createArtist("Red Velvet");
+        //artistDao.updateArtist("Twice", 6);
+        //artistDao.archivedArtist("Twice", 6);
+        //artistDao.restoreArtist("Twice", 6);
+        //artistDao.deleteArtist(10);
+        //artistDao.readArtistById(5);
+        //artistDao.searchArtist("LI");
+        //artistDao.readAllArchivedArtists();
     }
     // CRUD Operation
 
