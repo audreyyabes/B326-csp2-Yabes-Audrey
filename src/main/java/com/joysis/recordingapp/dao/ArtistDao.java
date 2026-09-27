@@ -120,16 +120,11 @@ public class ArtistDao extends DbConnection {
         }
     }
 
-    public void archivedArtist (String name, int id){
+    public void archivedArtist ( int id){
         // soft delete
         // hard delete
         if (id <= 0) {
             System.out.println("Invalid artist ID.");
-            return;
-        }
-
-        if (name == null || name.trim().isEmpty()) {
-            System.out.println("Artist name is required");
             return;
         }
 
@@ -143,7 +138,7 @@ public class ArtistDao extends DbConnection {
 
             int rows = prep.executeUpdate();
 
-            System.out.println(rows > 0 ? "Artist " + name + " Archived successfully" : "Failed to update artist");
+            System.out.println(rows > 0 ? "Artist Archived successfully" : "Failed to update artist");
 
             System.out.println();
         } catch (SQLException e) {

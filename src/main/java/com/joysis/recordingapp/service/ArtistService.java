@@ -12,8 +12,8 @@ public interface ArtistService {
     Artist readArtistById (int id);
     boolean createArtist(Artist artist);
     boolean updateArtist(Artist artist);
-    boolean archivedArtist (String name, int id);
-    boolean restoreArtist (String name, int id);
+    boolean archivedArtist (int id);
+    boolean restoreArtist (int id);
     boolean deleteArtist (int id);
 
 }

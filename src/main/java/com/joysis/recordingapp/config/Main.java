@@ -14,7 +14,7 @@ public class Main {
         //artistDao.readAllArtist();
         //artistDao.createArtist("Red Velvet");
         //artistDao.updateArtist("Twice", 6);
-        //artistDao.archivedArtist("Twice", 6);
+        //artistDao.archivedArtist( 14);
         //artistDao.restoreArtist("Twice", 6);
         //artistDao.deleteArtist(10);
         //artistDao.readArtistById(5);

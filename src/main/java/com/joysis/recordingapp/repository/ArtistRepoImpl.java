@@ -69,29 +69,31 @@ public class ArtistRepoImpl implements ArtistRepo {
             int rowsAffected = prep.executeUpdate();
             return rowsAffected > 0;
         } catch (SQLException e) {
-            System.out.println("Update Artist: " + e.getMessage());
+            System.err.println("Update Artist Error: " + e.getMessage());
         }
         return false;
     }
 
     @Override
-    public boolean archivedArtist(String name, int id) {
-
+    public boolean archivedArtist(int id) {
         String query = "UPDATE artists SET is_archived = 1  WHERE id = ?";
-
         try (Connection conn = dbConnection.connect();
              PreparedStatement prep = conn.prepareStatement(query)) {
-            prep.setInt(1, id);
 
-            int rows = prep.executeUpdate();
+            prep.setInt(1, id);
+            int rowsAffected = prep.executeUpdate();
+
+            return rowsAffected > 0;
+
+
         } catch (SQLException e) {
-            System.out.println("Archived Artist: " + e.getMessage());
+            System.err.println("Archive Artist Error: " + e.getMessage());
         }
         return false;
     }
 
     @Override
-    public boolean restoreArtist(String name, int id) {
+    public boolean restoreArtist(int id) {
 
         String query = "UPDATE artists SET is_archived = 0  WHERE id = ?";
 
@@ -109,17 +111,17 @@ public class ArtistRepoImpl implements ArtistRepo {
     @Override
     public boolean deleteArtist(int id) {
         // hard delete
-
         String query = "DELETE FROM artists WHERE id = ?";
 
         try (Connection conn = dbConnection.connect();
              PreparedStatement prep = conn.prepareStatement(query)) {
             prep.setInt(1, id);
+            int rowsAffected = prep.executeUpdate();
 
-            int rows = prep.executeUpdate();
+            return rowsAffected > 0;
 
         } catch (SQLException e) {
-            System.out.println("Delete Artist: " + e.getMessage());
+            System.err.println("Delete Artist Error: " + e.getMessage());
         }
         return false;
     }
@@ -141,7 +143,7 @@ public class ArtistRepoImpl implements ArtistRepo {
             }
 
         } catch (SQLException e) {
-            System.out.println("Delete Artist: " + e.getMessage());
+            System.out.println("Read Artist by ID: " + e.getMessage());
         }
         return null;
     }

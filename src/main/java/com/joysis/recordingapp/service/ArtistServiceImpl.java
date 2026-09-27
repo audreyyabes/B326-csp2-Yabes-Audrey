@@ -33,12 +33,21 @@ public class ArtistServiceImpl implements ArtistService{
 
     @Override
     public boolean createArtist(Artist artist) {
-        if (artist.getName() == null || artist.getName().trim().isEmpty()) {
-            System.out.println("Artist name is required");
+        if (artist == null) {
+            System.out.println("Artist object cannot be null.");
             return false;
         }
-        return false;
+
+        if (artist.getName() == null || artist.getName().trim().isEmpty()) {
+            System.out.println("Artist name is required.");
+            return false;
+        }
+
+
+        artist.setName(artist.getName().trim());
+        return artistRepo.createArtist(artist);
     }
+
 
     @Override
     public List<Artist> searchArtist (String keyword){
@@ -60,33 +69,26 @@ public class ArtistServiceImpl implements ArtistService{
             System.out.println("Artist name is required");
             return false;
         }
-        return false;
+        return artistRepo.updateArtist(artist);
     }
 
     @Override
-    public boolean archivedArtist (String name, int id){
+    public boolean archivedArtist(int id) {
         if (id <= 0) {
-            System.out.println("Invalid artist ID...");
+            System.out.println("Invalid artist ID for archive.");
             return false;
         }
-        if (name == null || name.trim().isEmpty()) {
-            System.out.println("Artist name is required...");
-            return false;
-        }
-        return false;
+
+        return artistRepo.archivedArtist(id);
     }
 
     @Override
-    public boolean restoreArtist (String name, int id){
+    public boolean restoreArtist (int id){
         if (id <= 0){
-            System.out.println("Invalid artist ID...");
+            System.out.println("Invalid artist ID to restore...");
             return false;
         }
-        if (name == null || name.trim().isEmpty()) {
-            System.out.println("Artist name is required...");
-            return false;
-        }
-        return false;
+        return artistRepo.restoreArtist(id);
     }
 
     @Override
@@ -95,7 +97,7 @@ public class ArtistServiceImpl implements ArtistService{
             System.out.println("Invalid artist ID...");
             return false;
         }
-        return false;
+        return artistRepo.deleteArtist(id);
     }
 
 }
