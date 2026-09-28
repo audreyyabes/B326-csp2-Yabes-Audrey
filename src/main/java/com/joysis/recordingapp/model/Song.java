@@ -25,6 +25,13 @@ public class Song {
         this.albumName = albumName;
     }
 
+    public Song(int id, String title, int length, String genre) {
+        this.id = id;
+        this.title = title;
+        this.length = length;
+        this.genre = genre;
+    }
+
     public int getId() {
         return id;
     }
