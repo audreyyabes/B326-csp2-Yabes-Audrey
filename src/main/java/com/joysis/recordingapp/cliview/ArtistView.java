@@ -3,7 +3,6 @@ package com.joysis.recordingapp.cliview;
 import com.joysis.recordingapp.controller.ArtistController;
 import com.joysis.recordingapp.model.Artist;
 
-import javax.xml.namespace.QName;
 import java.util.List;
 import java.util.Scanner;
 
@@ -17,7 +16,7 @@ public class ArtistView {
         this.scanner = scanner;
     }
 
-    public void run() {
+    public void runArtist() {
         int choice;
         do {
             printMenu();

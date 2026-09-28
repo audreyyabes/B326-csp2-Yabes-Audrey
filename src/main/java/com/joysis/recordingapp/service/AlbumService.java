@@ -1,10 +1,11 @@
-package com.joysis.recordingapp.repository;
+package com.joysis.recordingapp.service;
+
 
 import com.joysis.recordingapp.model.Album;
 
 import java.util.List;
 
-public interface AlbumRepo {
+public interface AlbumService {
 
     List<Album> getAllAlbum();
     List<Album> searchAlbum(String keyword);
@@ -15,5 +16,4 @@ public interface AlbumRepo {
     boolean deleteAlbum(int id);
     boolean archivedAlbum (int id);
     boolean restoreAlbum (int id);
-
 }

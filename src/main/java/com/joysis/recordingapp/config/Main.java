@@ -12,6 +12,7 @@ public class Main {
         DbConnection dbConnection = new DbConnection();
         ArtistDao artistDao = new ArtistDao(dbConnection);
         //artistDao.readAllArtist();
+       //artistDao.readAllAlbums(); // with artist name
         //artistDao.createArtist("Red Velvet");
         //artistDao.updateArtist("Twice", 6);
         //artistDao.archivedArtist( 14);

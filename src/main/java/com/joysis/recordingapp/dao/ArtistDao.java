@@ -72,6 +72,36 @@ public class ArtistDao extends DbConnection {
             System.err.println("Get all artists "+ e.getMessage());
         }
     }
+    public void readAllAlbums(){
+        String query = """
+            SELECT albums.id, albums.name, artists.name AS artist_name
+            FROM albums
+            JOIN artists ON albums.artist_id = artists.id
+            WHERE albums.is_archived = 0
+            """;
+        try (Connection conn = dbConnection.connect(); //connect db
+             Statement stmt = conn.createStatement(); // create statement
+             ResultSet result = stmt.executeQuery(query); // execute query
+        ) {
+
+
+            System.out.printf("%-5s | %-20s | %-20s%n",
+                    "ID", "Name", "Artist Name");
+            System.out.println("-".repeat(52));
+            //extract data
+            while (result.next()) {
+                int id = result.getInt("id");
+                String name = result.getString("name");
+                String artistName = result.getString("artist_name");
+
+                System.out.printf("%-5d | %-20s | %-20s%n",
+                        id, name, artistName);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Get all Albums "+ e.getMessage());
+        }
+    }
 
     public  void createArtist(String name){
         // Anti-sql injection
